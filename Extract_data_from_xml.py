@@ -4,26 +4,27 @@ import datetime as dt
 import pandas as pd
 import re
 
-file_path = ("E:\python_project\schemas\AdaniPorts1_INDAS_828228_5538_01112022194338_WEB.xml")
+file_path = ("D:\Learning\extract-xbrl-financial\AmbujaCement_INDAS_790050_4966_22102022125650_WEB.xml")
 tree = ET.parse(file_path)
 root = tree.getroot()
 
 for x in root:
-    #print(x.tag)
-    x.tag = re.sub("{http://www.bseindia.com/xbrl/fin/2019-09-30/in-bse-fin}","",str(x.tag))
-
-    tags = [x.tag]
-    data = [x.text]
-    #print(tags)
-    #print(data)
-    df = pd.DataFrame()
-    df = df.reindex(columns = tags)
-    df2 =  pd.DataFrame(data)
-    df4 = pd.concat([df,df2], ignore_index=False)
-    print(df4)
-
-    #df.to_excel("output1.xlsx")
     
+    x.tag = re.sub("{http://www.bseindia.com/xbrl/fin/2020-03-31/in-bse-fin}","",str(x.tag))
+    cols = x.tag
+    data = x.text
+    
+    print(cols)
+    print(data)
+    # col = x.tag
+    # print(col)
+    
+   
+    # datas = x.text
+    # print(data)
+    
+    
+
     
 
 
